@@ -1,0 +1,57 @@
+@STATEMACHINE | EH_STATEMACHINE_ID_DEFAULT       | 0
+@STATEMACHINE | PDMCC_INTERFACE_ID               | 8
+@STATEMACHINE | DIAGMONITOR_INTERFACE_ID         | 10
+@STATEMACHINE | EH_GENERIC_EVENT_ID              | 14
+@STATEMACHINE | COMPONENTSTATESTATE_INTERFACE_ID | 15
+
+###############################################################################################################
+# EH  internal events, not an enum, since it will be extended by the user
+###############################################################################################################
+@EVENT | EH_INTERNAL_INVALID                    | EV_VERSION | EV_EH | EH_STATEMACHINE_ID_DEFAULT | 0x000000000
+@EVENT | EH_INTERNAL_STOP                       | EV_VERSION | EV_EH | EH_STATEMACHINE_ID_DEFAULT | 0x000000001
+
+###############################################################################################################
+# Domain On Reason events
+###############################################################################################################
+@EVENT | EV_EH_PDMCC_DOMAIN_ON_REASON_NONE      | EV_VERSION | EV_EH | PDMCC_INTERFACE_ID         | 0x000000000
+@EVENT | EV_EH_PDMCC_DOMAIN_ON_REASON_GENERIC   | EV_VERSION | EV_EH | PDMCC_INTERFACE_ID         | 0x000000001
+@EVENT | EV_EH_PDMCC_DOMAIN_ON_REASON_SW_UPDATE | EV_VERSION | EV_EH | PDMCC_INTERFACE_ID         | 0x000000002
+@EVENT | EV_EH_CONFIG_MANAGER_TEST              | EV_VERSION | EV_EH | PDMCC_INTERFACE_ID         | 0x00000004D
+
+@EVENT | EV_EH_SET_FG_STATE                     | EV_VERSION | EV_EH | EH_GENERIC_EVENT_ID        | 0x000000000
+@EVENT | EV_EH_UNLOAD_FG_PLUGIN                 | EV_VERSION | EV_EH | EH_GENERIC_EVENT_ID        | 0x000000002
+@EVENT | EV_EH_RELOAD_FUNCTION_GROUPS           | EV_VERSION | EV_EH | EH_GENERIC_EVENT_ID        | 0x000000003
+@EVENT | EV_EH_SET_FG_PREVIOUS_STATE            | EV_VERSION | EV_EH | EH_GENERIC_EVENT_ID        | 0x000000004
+
+###############################################################################################################
+# ComponentStateStatus events
+###############################################################################################################
+
+# component state change successfully completed
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_SUCCESS       | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000020
+
+# error on interface
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_GENERAL_ERROR | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000021
+
+# state change accepted for processing, but not accepted for finally being carried out
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_PENDING       | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000022
+
+# unknown state
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_INVALID       | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000023
+
+# confirm of aborted state change due to other state change incoming
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_ABORTED       | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000024
+
+# immediate (in handler function) or delayed (after kPending reporting) information that
+# state was not accepted to be taken. State Management will have to ask again for this state
+# (e.g. with kForced set)
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_REJECTED      | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000025
+
+# state was not changed since last request to get new Component State. Only used for polling
+# mode in conjunction with ComponentClient::GetComponentState()
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_UNCHANGED     | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000026
+@EVENT | EV_EH_REQUEST_COMPONENT_STATE_TIMEOUT       | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000027
+
+# Sent by external interface when an component disconnects.
+# Data field contains the connection ID.
+@EVENT | EV_EH_COMPONENT_DISCONNECTED                | EV_VERSION | EV_EH | COMPONENTSTATESTATE_INTERFACE_ID | 0x000000040

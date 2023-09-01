@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>RB</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Pt</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>Platform</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>PA3</SHORT-NAME>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>Processes</SHORT-NAME>
+                      <ELEMENTS>
+                        <PROCESS>
+                          <SHORT-NAME>Proc_Exe_DemoClient</SHORT-NAME>
+                          <DESIGN-REF DEST="PROCESS-DESIGN">/RB/VRTE/ServiceInstanceToPortPrototypeMappings/Proc_Exe_DemoClient_PD</DESIGN-REF>
+                          <EXECUTABLE-REF DEST="EXECUTABLE">/RB/Pt/Platform/PA3/Executables/Exe_DemoClient</EXECUTABLE-REF>
+                          <STATE-DEPENDENT-STARTUP-CONFIGS>
+                            <STATE-DEPENDENT-STARTUP-CONFIG>
+                              <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/RB/Pt/Platform/PA3/StartupConfigSets/Proc_Exe_DemoClient_StartupConfigSet/Proc_Exe_DemoClient_StartupConfig</STARTUP-CONFIG-REF>
+                            </STATE-DEPENDENT-STARTUP-CONFIG>
+                          </STATE-DEPENDENT-STARTUP-CONFIGS>
+                        </PROCESS>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>StartupConfigSets</SHORT-NAME>
+                      <ELEMENTS>
+                        <STARTUP-CONFIG-SET>
+                          <SHORT-NAME>Proc_Exe_DemoClient_StartupConfigSet</SHORT-NAME>
+                        </STARTUP-CONFIG-SET>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>ProcessToMachineMappings</SHORT-NAME>
+                      <ELEMENTS>
+                        <PROCESS-TO-MACHINE-MAPPING-SET>
+                          <SHORT-NAME>Exe_DemoClient_Instances_ProcessToMachineMappingSet</SHORT-NAME>
+                          <PROCESS-TO-MACHINE-MAPPINGS>
+                            <PROCESS-TO-MACHINE-MAPPING>
+                              <SHORT-NAME>Proc_Exe_DemoClient_FlexibleSafety_Mapping</SHORT-NAME>
+                              <MACHINE-REF DEST="MACHINE">/RB/VRTE/Machines/FlexibleSafety</MACHINE-REF>
+                              <PROCESS-REF DEST="PROCESS">/RB/Pt/Platform/PA3/Processes/Proc_Exe_DemoClient</PROCESS-REF>
+                            </PROCESS-TO-MACHINE-MAPPING>
+                          </PROCESS-TO-MACHINE-MAPPINGS>
+                        </PROCESS-TO-MACHINE-MAPPING-SET>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>DltLogChannelToProcessMappings</SHORT-NAME>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>VRTE</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>ServiceInstanceToPortPrototypeMappings</SHORT-NAME>
+              <ELEMENTS>
+                <PROCESS-DESIGN>
+                  <SHORT-NAME>Proc_Exe_DemoClient_PD</SHORT-NAME>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/RB/Pt/Platform/PA3/Executables/Exe_DemoClient</EXECUTABLE-REF>
+                </PROCESS-DESIGN>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+

@@ -1,0 +1,20 @@
+import AUTOSAR.StdTypes.bool
+import AUTOSAR.StdTypes.uint16_t
+import AUTOSAR.StdTypes.uint32_t
+import AUTOSAR.StdTypes.uint8_t
+
+package RB.AdaptiveDemoManifest {
+    struct MethodRequestStruct {
+		value_one of array <uint16_t, 3>
+		value_two of bool
+		value_three of uint32_t
+	}
+	
+	typedef MsgRequest of MethodRequestStruct
+	
+	typedef MsgResponse of array <uint8_t,5>
+	
+	interface Method namespace com.bosch.vrte.method {
+		method MethodIO (in m_value_in of MsgRequest, out m_value_out of MsgResponse, out m_res_out of bool)
+	}	
+}

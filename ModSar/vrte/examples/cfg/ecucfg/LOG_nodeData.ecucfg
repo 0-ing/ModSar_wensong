@@ -1,0 +1,46 @@
+{
+  "type" : "http://www.bosch.com/vrte/ecucfg#//DataNodeModel",
+  "structureName" : "LOG",
+  "dataCategory" : "EXTRACTED",
+  "structureMajorVersion" : 1,
+  "structureMinorVersion" : 1,
+  "relatedDataNodeStructureModel" : "LOG",
+  "rootDataNode" : {
+    "relatedDataNodeStructure" : 0,
+    "contextKey" : "ROOT",
+    "dataNodeContainers" : [ {
+      "relatedDataNodeContainerStructure" : 0,
+      "dataNodes" : [ {
+        "relatedDataNodeStructure" : 20,
+        "contextKey" : "/RB/VRTE/Dummy",
+        "dataNodeAttributes" : [ {
+          "relatedDataNodeAttributeStructure" : 7,
+          "value" : "false"
+        }, {
+          "relatedDataNodeAttributeStructure" : 5,
+          "value" : ""
+        }, {
+          "relatedDataNodeAttributeStructure" : 4,
+          "value" : "verbose"
+        }, {
+          "relatedDataNodeAttributeStructure" : 1,
+          "value" : "GENE"
+        }, {
+          "relatedDataNodeAttributeStructure" : 0,
+          "value" : "DLT Logger for Dummy"
+        } ],
+        "dataNodeContainers" : [ {
+          "relatedDataNodeContainerStructure" : 0,
+          "dataNodes" : [ {
+            "relatedDataNodeStructure" : 21,
+            "contextKey" : "0",
+            "dataNodeAttributes" : [ {
+              "relatedDataNodeAttributeStructure" : 0,
+              "value" : "console"
+            } ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <ADMIN-DATA>
+    <USED-LANGUAGES>
+      <L-10 L="EN" xml:space="preserve">EN</L-10>
+    </USED-LANGUAGES>
+    <DOC-REVISIONS>
+      <DOC-REVISION>
+        <REVISION-LABEL>2.0.0_CAP_AP_Example;AR20-11</REVISION-LABEL>
+        <ISSUED-BY>RB</ISSUED-BY>
+        <DATE>2020-12-16</DATE>
+      </DOC-REVISION>
+    </DOC-REVISIONS>
+  </ADMIN-DATA>
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>bosch</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>VRTE</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>QT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>ECUCFG</SHORT-NAME>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>CheckExtractTool</SHORT-NAME>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>SWCL</SHORT-NAME>
+          <ELEMENTS>
+            <SOFTWARE-CLUSTER>
+              <SHORT-NAME>SWCL_1</SHORT-NAME>
+              <CATEGORY>PLATFORM_CORE</CATEGORY>
+              <INTRODUCTION>
+                <P SI="any">
+                  <L-1 L="EN">ARPath /bosch/SWCL/SWCL_1</L-1>
+                </P>
+              </INTRODUCTION>
+            </SOFTWARE-CLUSTER>
+            <SOFTWARE-PACKAGE>
+              <SHORT-NAME>SWP_1</SHORT-NAME>
+              <INTRODUCTION>
+                <P SI="any">
+                  <L-1 L="EN">ARPath /bosch/SWCL/SWP_1</L-1>
+                </P>
+              </INTRODUCTION>
+              <SOFTWARE-CLUSTER-REF DEST="SOFTWARE-CLUSTER">/bosch/SWCL/SWCL_1</SOFTWARE-CLUSTER-REF>
+            </SOFTWARE-PACKAGE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

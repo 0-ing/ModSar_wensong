@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>RB</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>VRTE</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>W3</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Executables</SHORT-NAME>
+                  <ELEMENTS>
+                    <EXECUTABLE>
+                      <SHORT-NAME>Exe_Sample_App</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="path">/opt/app/Exe_Sample_App</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                    </EXECUTABLE>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Processes</SHORT-NAME>
+                  <ELEMENTS>
+                    <PROCESS>
+                      <SHORT-NAME>Proc_Exe_Sample_App</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="uid">0</SD>
+                            <SD GID="gid">0</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <EXECUTABLE-REF DEST="EXECUTABLE">/RB/VRTE/W3/Executables/Exe_Sample_App</EXECUTABLE-REF>
+                      <STATE-DEPENDENT-STARTUP-CONFIGS>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/RB/VRTE/Machines/FlexibleSafetyFunctionGroupSet/DefaultFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/RB/VRTE/Mode_Declaration_Groups/DefaultFG/On</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/RB/VRTE/W3/StartupConfigs/Proc_Exe_Sample_App_StartupConfig</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                      </STATE-DEPENDENT-STARTUP-CONFIGS>
+                    </PROCESS>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>StartupConfigs</SHORT-NAME>
+                  <ELEMENTS>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>Proc_Exe_Sample_App_StartupConfig</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>LD_LIBRARY_PATH</KEY>
+                          <VALUE>/opt/vrte/lib:/usr/lib:/lib:/proc/boot:/opt/vrte/usr/lib</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>ECUCFG_ENV_VAR_ROOTFOLDER</KEY>
+                          <VALUE>/opt/app/etc/ecu-cfg</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                      <SCHEDULING-POLICY>SCHED_RR</SCHEDULING-POLICY>
+                      <TERMINATION-BEHAVIOR>PROCESS-IS-SELF-TERMINATING</TERMINATION-BEHAVIOR>
+                      <TIMEOUT>
+                        <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                        <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                      </TIMEOUT>
+                    </STARTUP-CONFIG>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>ProcessToMachineMappings</SHORT-NAME>
+                  <ELEMENTS>
+                    <PROCESS-TO-MACHINE-MAPPING-SET>
+                      <SHORT-NAME>Exe_Sample_App_ExecutionManifest_ProcessToMachineMappingSet</SHORT-NAME>
+                      <PROCESS-TO-MACHINE-MAPPINGS>
+                        <PROCESS-TO-MACHINE-MAPPING>
+                          <SHORT-NAME>Proc_Exe_Sample_App_FlexibleSafety_Mapping</SHORT-NAME>
+                          <MACHINE-REF DEST="MACHINE">/RB/VRTE/Machines/FlexibleSafety</MACHINE-REF>
+                          <PROCESS-REF DEST="PROCESS">/RB/VRTE/W3/Processes/Proc_Exe_Sample_App</PROCESS-REF>
+                        </PROCESS-TO-MACHINE-MAPPING>
+                      </PROCESS-TO-MACHINE-MAPPINGS>
+                    </PROCESS-TO-MACHINE-MAPPING-SET>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>DltLogSinkToPortPrototypeMappings</SHORT-NAME>
+                  <ELEMENTS>
+                    <DLT-LOG-SINK-TO-PORT-PROTOTYPE-MAPPING>
+                      <SHORT-NAME>Exe_Sample_App_DLTLogChannel_Proc_Exe_Sample_App_dltMapping</SHORT-NAME>
+                      <DLT-CONTEXT-REF DEST="DLT-CONTEXT">/RB/VRTE/Machines/Dlt_Dummy_Context</DLT-CONTEXT-REF>
+                      <DLT-LOG-SINK-REFS>
+                        <DLT-LOG-SINK-REF DEST="DLT-LOG-SINK">/RB/VRTE/W3/DltLogSinks/Exe_Sample_App_DLTLogChannel</DLT-LOG-SINK-REF>
+                      </DLT-LOG-SINK-REFS>
+                      <PROCESS-REF DEST="PROCESS">/RB/VRTE/W3/Processes/Proc_Exe_Sample_App</PROCESS-REF>
+                    </DLT-LOG-SINK-TO-PORT-PROTOTYPE-MAPPING>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

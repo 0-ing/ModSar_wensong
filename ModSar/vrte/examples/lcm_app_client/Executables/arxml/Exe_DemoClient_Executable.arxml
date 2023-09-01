@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>RB</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Pt</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>Platform</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>PA3</SHORT-NAME>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>Executables</SHORT-NAME>
+                      <ELEMENTS>
+                        <EXECUTABLE>
+                          <SHORT-NAME>Exe_DemoClient</SHORT-NAME>
+                          <ADMIN-DATA>
+                            <SDGS>
+                              <SDG GID="VRTE">
+                                <SD GID="path">/opt/app/Exe_DemoClient</SD>
+                              </SDG>
+                            </SDGS>
+                          </ADMIN-DATA>
+                          <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                          <ROOT-SW-COMPONENT-PROTOTYPE>
+                            <SHORT-NAME>Exe_DemoClient_RootSwComponent</SHORT-NAME>
+                            <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/RB/Pt/VehFct/DrvDemDet/ItpPedl/Components/DemoClient</APPLICATION-TYPE-TREF>
+                          </ROOT-SW-COMPONENT-PROTOTYPE>
+                          <VERSION>1.0.0.0</VERSION>
+                        </EXECUTABLE>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

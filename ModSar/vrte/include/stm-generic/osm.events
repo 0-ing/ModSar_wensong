@@ -1,0 +1,57 @@
+@STATEMACHINE | EV_ID_OSM_STATEMACHINE_CORE | 0
+@STATEMACHINE | EV_ID_OSM_STATEMACHINE_1    | 1
+@STATEMACHINE | EV_ID_OSM_PROLONG_REQUEST   | 2
+
+############################################################################################################################
+# Incoming events for triggering transitions from sender EH
+############################################################################################################################
+@EVENT | EV_EH_MACHINESTATE_SHUTDOWN                       | EV_VERSION | EV_EH  | EV_ID_OSM_STATEMACHINE_CORE | 0x110000001
+@EVENT | EV_EH_RESPSHUTDOWN_TRUE                           | EV_VERSION | EV_EH  | EV_ID_OSM_STATEMACHINE_CORE | 0x110000003
+@EVENT | EV_EH_DIAG_ACTIVITY_ACTIVE                        | EV_VERSION | EV_EH  | EV_ID_OSM_STATEMACHINE_CORE | 0x110000004
+@EVENT | EV_EH_DIAG_ACTIVITY_INACTIVE                      | EV_VERSION | EV_EH  | EV_ID_OSM_STATEMACHINE_CORE | 0x110000005
+
+@EVENT | EV_FGM_MACHINESTATE_STARTUP                       | EV_VERSION | EV_FGM | EV_ID_OSM_STATEMACHINE_CORE | 0x110000000
+@EVENT | EV_FGM_MACHINESTATE_SET_STATE_FINISHED_RESTART_uP | EV_VERSION | EV_FGM | EV_ID_OSM_STATEMACHINE_CORE | 0x110000002
+
+############################################################################################################################
+# Outcoming events for new state enter and reach
+############################################################################################################################
+@EVENT | EV_OSM_INIT                                       | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000000
+@EVENT | EV_OSM_RUN_ENTERED                                | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000001
+@EVENT | EV_OSM_RUN_REACHED                                | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000002
+@EVENT | EV_OSM_PREPARE_SHUTDOWN_ENTERED                   | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000003
+@EVENT | EV_OSM_PREPARE_SHUTDOWN_REACHED                   | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000004
+@EVENT | EV_OSM_UPDATE_ENTERED                             | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000005
+@EVENT | EV_OSM_UPDATE_REACHED                             | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000006
+@EVENT | EV_OSM_SHUTDOWN_ENTERED                           | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000007
+@EVENT | EV_OSM_SHUTDOWN_REACHED                           | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_1    | 0x000000008
+
+@EVENT | EV_OSM_REQ_PROLONG_TRUE                           | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x000000009
+@EVENT | EV_OSM_REQ_PROLONG_FALSE                          | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x00000000A
+@EVENT | EV_OSM_REQ_SHUTDOWN_TRUE                          | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x00000000B
+@EVENT | EV_OSM_POINT_OF_NO_RETURN_REACHED                 | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x00000000C
+@EVENT | EV_OSM_SHUTDOWN_REACHED_TRUE                      | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x00000000D
+
+############################################################################################################################
+# Callback events from statemachine plugins
+############################################################################################################################
+@EVENT | EV_OSM_FSM_PREVENTSHUTDOWN_DISABLE                | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000000
+@EVENT | EV_OSM_FSM_UCM_ACTIVITY_TIMEOUT                   | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000001
+
+############################################################################################################################
+# The events are used for keep-up FS domain mechanism
+############################################################################################################################
+@EVENT | EV_OSM_FSM_UCM_DOMAIN_INFO_SW_UPDATE              | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000003
+@EVENT | EV_OSM_FSM_UCM_DOMAIN_INFO_GENERIC                | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000004
+@EVENT | EV_OSM_FSM_UCM_DOMAIN_INFO_NONE                   | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000005
+
+############################################################################################################################
+# The event  is used to set state of machine fsm
+############################################################################################################################
+@EVENT | EV_OSM_SET_STATE_FG                               | EV_VERSION | EV_OSM | EV_ID_OSM_STATEMACHINE_CORE | 0x200000008
+
+@EVENT | EV_OSM_FSM_PROLONG_REQUEST_NONE                   | EV_VERSION | EV_OSM | EV_ID_OSM_PROLONG_REQUEST   | 0x000000000
+@EVENT | EV_OSM_FSM_PROLONG_REQUEST_GENERIC                | EV_VERSION | EV_OSM | EV_ID_OSM_PROLONG_REQUEST   | 0x000000001
+@EVENT | EV_OSM_FSM_PROLONG_REQUEST_SW_UPDATE              | EV_VERSION | EV_OSM | EV_ID_OSM_PROLONG_REQUEST   | 0x000010000
+@EVENT | EV_OSM_FSM_PROLONG_REQUEST_SW_DIAG                | EV_VERSION | EV_OSM | EV_ID_OSM_PROLONG_REQUEST   | 0x000100000
+@EVENT | EV_OSM_FSM_PROLONG_REQUEST_SW_TELEPHONE           | EV_VERSION | EV_OSM | EV_ID_OSM_PROLONG_REQUEST   | 0x001000000

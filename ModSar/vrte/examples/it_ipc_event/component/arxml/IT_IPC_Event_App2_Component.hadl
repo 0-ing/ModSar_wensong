@@ -1,0 +1,12 @@
+import com.bosch.vrte.com.it.ipc.IApp1Notification
+import com.bosch.vrte.com.it.ipc.IApp2Notification
+import com.bosch.vrte.com.it.ipc.ServiceController
+
+package com.bosch.vrte.com.it.ipc {	
+	component app2 {
+		provide pp_app2_IApp2Notification id single for IApp2Notification
+		require rp_app2_IApp1Notification id single for IApp1Notification
+		provide pp_app2_ServiceController id single for ServiceController
+	}
+
+}

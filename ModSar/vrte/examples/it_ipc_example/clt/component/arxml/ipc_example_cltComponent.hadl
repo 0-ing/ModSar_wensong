@@ -1,0 +1,9 @@
+import com.bosch.vrte.com.example.ISeed
+import com.bosch.vrte.com.example.ISum
+
+package com.bosch.vrte.com.example {
+	component ipc_example_clt {
+		require rp_Example_Clt_ISeed id single for ISeed
+		require rp_Example_Clt_ISum id single for ISum
+	}
+}

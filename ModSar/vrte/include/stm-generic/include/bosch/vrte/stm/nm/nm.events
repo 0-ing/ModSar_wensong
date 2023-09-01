@@ -1,0 +1,12 @@
+
+@STATEMACHINE | NM_GENERIC_EVENT_ID | 0
+
+###############################################################################################################
+# NM events
+###############################################################################################################
+
+@EVENT | EV_NM_SET_NMH_STATE         | EV_VERSION | EV_NM | NM_GENERIC_EVENT_ID | 0x000000001
+@EVENT | EV_NM_SET_NMH_STATE_SUCCESS | EV_VERSION | EV_EH | NM_GENERIC_EVENT_ID | 0x000000002
+@EVENT | EV_NM_SET_NMH_STATE_FAILED  | EV_VERSION | EV_EH | NM_GENERIC_EVENT_ID | 0x000000003
+@EVENT | EV_NM_NOTIFY_NMH_STATE      | EV_VERSION | EV_EH | NM_GENERIC_EVENT_ID | 0x000000004
+@EVENT | EV_NM_GET_NMH_STATE         | EV_VERSION | EV_NM | NM_GENERIC_EVENT_ID | 0x000000005

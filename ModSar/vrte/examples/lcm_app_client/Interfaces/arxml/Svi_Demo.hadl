@@ -1,0 +1,12 @@
+//Method: client input a number, get the index and the sum of number and old from server
+//Event: client subscribe the event, will got the event with float number 
+//Filed: client can set, get, and receive the notify of the field 
+//import AUTOSAR.StdTypes.bool
+import AUTOSAR.StdTypes.uint32_t
+
+package RB.Pt.VehFct.DrvDemDet.DetnPedl.Interfaces.V1_0_0 {
+    interface Svi_Demo namespace rb.pt.vehfct.drvdemdet.detnpedl {
+        field  Fld_Arg of uint32_t (get notify set)
+    }
+}
+

@@ -1,0 +1,11 @@
+import RB.VRTE.StateManagement.TriggerInOut_StateDefaultFG
+import RB.VRTE.StateManagement.TriggerInOut_StateSysModeFG
+import RB.VRTE.StateManagement.TriggerIn_Generic
+
+package RB.Pt.VehFct.DrvDemDet.ItpPedl.Components {
+    component DemoClient {
+        require RP_TriggerInOut_StateDefaultFG for TriggerInOut_StateDefaultFG
+        require RP_TriggerInOut_StateSysModeFG for TriggerInOut_StateSysModeFG
+        require RP_TriggerIn_Generic for TriggerIn_Generic
+    }
+}

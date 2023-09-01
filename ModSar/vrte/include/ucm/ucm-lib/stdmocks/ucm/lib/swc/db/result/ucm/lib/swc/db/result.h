@@ -1,0 +1,209 @@
+//==============================================================================
+// C O P Y R I G H T
+//------------------------------------------------------------------------------
+// Copyright (c) 2021 by Robert Bosch GmbH. All rights reserved.
+//
+// This file is property of Robert Bosch GmbH. Any unauthorized copy, use or
+// distribution is an offensive act against international law and may be
+// prosecuted under federal law. Its content is company confidential.
+//==============================================================================
+
+/// @file         ucm/lib/swc/db/result.h
+/// @brief
+/// @copyright    Robert Bosch GmbH 2021
+/// @author       Vesselin Mladenov
+/// @version
+/// @remarks
+
+#ifndef UCM_AAP_LIBRARY_UCM_LIB_SWC_DB__RESULT_H_
+#define UCM_AAP_LIBRARY_UCM_LIB_SWC_DB__RESULT_H_
+
+#include <bitset>
+#include <functional>
+
+
+#include "ucm/mock/sequence.h"
+#include "ucm/lib/swc/error.h"
+#include "ucm/lib/swc/irecord.h"
+#include "ucm/lib/swc/hrecord.h"
+#include "ucm/lib/swc/frecord.h"
+#include "ucm/lib/swc/srecord.h"
+
+namespace bosch {
+namespace vrte  {
+namespace ucm   {
+namespace lib   {
+namespace swc   {
+namespace db    {
+
+
+class Result final
+      : virtual protected ucm::mock::Sequence
+{
+
+public:
+    explicit Result() = default;
+
+    Result(Result     &&) = default;
+    Result(Result const&) = delete;
+
+    Result& operator=(Result     &&) = default;
+    Result& operator=(Result const&) = delete;
+
+    ~Result() = default;
+
+    std::vector<IRecord>& irecords() & noexcept;
+    std::vector<HRecord>& hrecords() & noexcept;
+    std::vector<FRecord>& frecords() & noexcept;
+    std::vector<SRecord>& srecords() & noexcept;
+    std::vector<unique_type>& uniques()  & noexcept;
+
+    std::vector<IRecord> irecords() && noexcept;
+    std::vector<HRecord> hrecords() && noexcept;
+    std::vector<FRecord> frecords() && noexcept;
+    std::vector<SRecord> srecords() && noexcept;
+    std::vector<unique_type> uniques()  && noexcept;
+
+    const std::vector<IRecord>& irecords() const & noexcept;
+    const std::vector<HRecord>& hrecords() const & noexcept;
+    const std::vector<FRecord>& frecords() const & noexcept;
+    const std::vector<SRecord>& srecords() const & noexcept;
+    const std::vector<unique_type>& uniques()  const & noexcept;
+
+    void add_record(IRecord&&) {pop<void>();}
+    void add_record(HRecord&&) {pop<void>();}
+    void add_record(FRecord&&) {pop<void>();}
+    void add_record(SRecord&&) {pop<void>();}
+    void add_unique(unique_type&&) {pop<void>();}
+
+    void set_count(const unique_type&) noexcept;
+
+    const unique_type& get_count() const noexcept;
+
+    void set_uniques(std::vector<unique_type>&&)
+        noexcept(std::is_nothrow_move_assignable<
+                     std::vector<unique_type>>::value) {}
+
+    void set_uniques(const std::vector<unique_type>&)
+        noexcept(std::is_nothrow_copy_assignable<
+                     std::vector<unique_type>>::value) {}
+
+    void set_records(std::vector<IRecord>&&)
+        noexcept(std::is_nothrow_move_assignable<
+                     std::vector<IRecord>>::value) {}
+
+    void set_records(std::vector<HRecord>&&)
+        noexcept(std::is_nothrow_move_assignable<
+                     std::vector<HRecord>>::value) {}
+
+    void set_records(std::vector<FRecord>&&)
+        noexcept(std::is_nothrow_move_assignable<
+                     std::vector<FRecord>>::value) {}
+
+    void set_records(std::vector<SRecord>&&)
+        noexcept(std::is_nothrow_move_assignable<
+                     std::vector<SRecord>>::value) {}
+
+private:
+    unique_type count_{0};
+    std::vector<IRecord> irecords_{};
+    std::vector<HRecord> hrecords_{};
+    std::vector<FRecord> frecords_{};
+    std::vector<SRecord> srecords_{};
+    std::vector<unique_type> uniques_{};
+};
+
+inline void Result::set_count(const unique_type&) noexcept
+{
+    pop<void>();
+}
+
+inline const unique_type& Result::get_count() const noexcept
+{
+    return pop<unique_type const&>();
+}
+
+inline std::vector<IRecord>& Result::irecords() & noexcept
+{
+    return pop<std::vector<IRecord>&>();
+}
+
+inline std::vector<HRecord>& Result::hrecords() & noexcept
+{
+    return pop<std::vector<HRecord>&>();
+}
+
+inline std::vector<FRecord>& Result::frecords() & noexcept
+{
+    return pop<std::vector<FRecord>&>();
+}
+
+inline std::vector<SRecord>& Result::srecords() & noexcept
+{
+    return pop<std::vector<SRecord>&>();
+}
+
+inline std::vector<unique_type>& Result::uniques() & noexcept
+{
+    return pop<std::vector<unique_type>&>();
+}
+
+inline std::vector<IRecord> Result::irecords() && noexcept
+{
+    return pop<std::vector<IRecord>>();
+}
+
+inline std::vector<HRecord> Result::hrecords() && noexcept
+{
+    return pop<std::vector<HRecord>>();
+}
+
+inline std::vector<FRecord> Result::frecords() && noexcept
+{
+    return pop<std::vector<FRecord>>();
+}
+
+inline std::vector<SRecord> Result::srecords() && noexcept
+{
+    return pop<std::vector<SRecord>>();
+}
+
+inline std::vector<unique_type> Result::uniques() && noexcept
+{
+    return pop<std::vector<unique_type>>();
+}
+
+inline const std::vector<unique_type>& Result::uniques() const & noexcept
+{
+    return pop<std::vector<unique_type> const&>();
+}
+
+inline const std::vector<IRecord>& Result::irecords() const & noexcept
+{
+    return pop<std::vector<IRecord> const&>();
+}
+
+inline const std::vector<HRecord>& Result::hrecords() const & noexcept
+{
+    return pop<std::vector<HRecord> const&>();
+}
+
+inline const std::vector<FRecord>& Result::frecords() const & noexcept
+{
+    return pop<std::vector<FRecord> const&>();
+}
+
+inline const std::vector<SRecord>& Result::srecords() const & noexcept
+{
+    return pop<std::vector<SRecord> const&>();
+}
+
+
+}    // namespace db
+}    // namespace swc
+}    // namespace lib
+}    // namespace ucm
+}    // namespace vrte
+}    // namespace bosch
+
+#endif // UCM_AAP_LIBRARY_UCM_LIB_SWC_DB__RESULT_H_

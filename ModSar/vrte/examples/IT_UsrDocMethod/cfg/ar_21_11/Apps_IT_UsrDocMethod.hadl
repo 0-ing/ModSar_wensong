@@ -1,0 +1,8 @@
+import RB.AdaptiveDemoManifest.Method
+
+package RB.AdaptiveDemoManifest {
+	component server_app {
+		provide pp_Method for Method
+	}
+}
+

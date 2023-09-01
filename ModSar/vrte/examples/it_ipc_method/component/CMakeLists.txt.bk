@@ -1,0 +1,43 @@
+# --------------------------------------------------------------------------
+# Copyright (c) Robert Bosch GmbH, 2017. All rights reserved.
+# The reproduction, distribution and utilization of this document as well as the communication of its contents to
+# others without explicit authorization is prohibited. Offenders will be held liable for the payment of damages.
+# All rights reserved in the event of the grant of a patent, utility model or design.
+# --------------------------------------------------------------------------
+
+############################################
+# Set configuration parameters
+############################################
+
+set(PROXIES
+    "com/bosch/vrte/com/it/method/imethodapp1"
+    "com/bosch/vrte/com/it/method/imethodapp3")
+
+set(SKELETONS
+    "com/bosch/vrte/com/it/method/imethodapp1"
+    "com/bosch/vrte/com/it/method/imethodapp3")
+
+set(DSOMEIP_FILES_FS1
+    "Machine_IT_Methods_FS1_gw.json"
+    "Machine_IT_Methods_FS1_sd.json")
+
+set(DSOMEIP_FILES_FS2
+    "Machine_IT_Methods_FS2_gw.json"
+    "Machine_IT_Methods_FS2_sd.json")
+
+set(ARXML_FILES
+    "${PLATFORM_TYPES_ARXML}"
+    "${SW_CLUSTER_DUMMY_ARXML}"
+    "IT_Methods_ServiceManifest.arxml"
+    "IT_Methods_TransformationProps.arxml"
+    "Machine_IT_Methods_FS1.arxml"
+    "Machine_IT_Methods_FS2.arxml"
+    "project_ServiceInstanceManifest.arxml")
+
+
+############################################
+# Call helper function for add & install
+############################################
+set(IPC_TEST "false")
+
+setup_int_test_gen()

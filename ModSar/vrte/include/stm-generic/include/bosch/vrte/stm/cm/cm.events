@@ -1,0 +1,8 @@
+@STATEMACHINE | EV_ID_CM_STATEMACHINE_CORE | 0
+
+##################################################################################################################
+# Event defines for CM event queue
+##################################################################################################################
+@EVENT | EV_CM_ERROR_COMPONENT_STATE_CHANGE_FAILED | EV_VERSION | EV_CM | EV_ID_CM_STATEMACHINE_CORE | 0x000000000
+@EVENT | EV_CM_REQUEST_COMPONENT_STATE_VOLUNTARY   | EV_VERSION | EV_CM | EV_ID_CM_STATEMACHINE_CORE | 0x000000010
+@EVENT | EV_CM_REQUEST_COMPONENT_STATE_FORCED      | EV_VERSION | EV_CM | EV_ID_CM_STATEMACHINE_CORE | 0x000000011

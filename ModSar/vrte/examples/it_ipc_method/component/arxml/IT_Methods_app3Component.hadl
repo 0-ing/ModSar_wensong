@@ -1,0 +1,14 @@
+import com.bosch.vrte.com.it.method.IMethodApp1
+import com.bosch.vrte.com.it.method.IMethodApp3
+package com.bosch.vrte.com.it.method {
+	component app1 {	
+		provide pp_app1_IMethodApp1 id single for IMethodApp1
+        require rp_app1_IMethodApp3 id single for IMethodApp3
+	}
+
+	component app3 {
+        require rp_app2_IMethodApp1 id single for IMethodApp1
+        provide pp_app2_IMethodApp3 id single for IMethodApp3
+	}
+
+}

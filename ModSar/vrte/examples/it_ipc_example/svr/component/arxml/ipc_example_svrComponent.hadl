@@ -1,0 +1,9 @@
+import com.bosch.vrte.com.example.ISeed
+import com.bosch.vrte.com.example.ISum
+
+package com.bosch.vrte.com.example {
+	component ipc_example_svr {
+		provide pp_Example_Svr_ISeed id single for ISeed
+		provide pp_Example_Svr_ISum id single for ISum
+	}
+} 

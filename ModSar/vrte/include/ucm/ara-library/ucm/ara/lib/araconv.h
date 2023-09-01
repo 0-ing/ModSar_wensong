@@ -1,0 +1,88 @@
+//=============================================================================
+// C O P Y R I G H T
+//-----------------------------------------------------------------------------
+// Copyright (c) 2021 by Robert Bosch GmbH. All rights reserved.
+//
+// This file is property of Robert Bosch GmbH. Any unauthorized copy, use or
+// distribution is an offensive act against international law and may be
+// prosecuted under federal law. Its content is company confidential.
+//=============================================================================
+
+/// \file         ucm/ara/lib/araconv.h
+/// \brief
+/// \copyright    Robert Bosch GmbH 2021
+/// \author       dsh8cob
+/// \version
+/// \remarks
+
+#ifndef UCM_AAP_PKGMANAGER_ARA_LIB_ARACONV_H_
+#define UCM_AAP_PKGMANAGER_ARA_LIB_ARACONV_H_
+
+#include "ucm/lib/types.h"
+#include "ucm/ara/api/aracom_includes.h"
+
+/// @addtogroup bosch_vrte_ucm_ara_lib
+/// @{
+
+namespace bosch  {
+namespace vrte   {
+namespace ucm    {
+namespace ara    {
+namespace lib    {
+
+using ARATypes = bosch::vrte::ucm::lib::ara::ARATypes;
+using Status = ARATypes::PackageManagerStatusType;
+
+
+/// @class Araconv
+/// @ingroup bosch_vrte_ucm_ara_lib
+/// @brief AraConv provides methods to convert internal types to ara defined types and vice-versa.
+///
+
+class Araconv
+{
+
+public:
+    /// Default constructor
+    Araconv() = default;
+    
+    /// Copy Semantics
+    Araconv(Araconv     &&) = delete;
+    
+    /// Copy Semantics
+    Araconv(Araconv const&) = delete;
+
+    /// Move Semantics
+    Araconv& operator=(Araconv     &&) = delete;
+    
+    /// Move Semantics
+    Araconv& operator=(Araconv const&) = delete;
+    
+    /// Default virtual destructor
+    virtual ~Araconv() = default;
+
+    /// \brief Convert array to native type.
+    /// \param [IN] Transfer ID array
+    /// \return Transfer Id of native type
+    static ARATypes::TransferIdType arraytonll(TransferIdType id);
+    
+    /// \brief Convert native type to array type.
+    /// \param [IN] Transfer ID native type
+    /// \return Transfer Id of array type
+    static TransferIdType nlltoarray(ARATypes::TransferIdType id);
+    
+    /// \brief Convert status from enum to string.
+    /// \param [IN] status of type enum class PackageManagerStatusType : std::uint8_t
+    /// \return Status in the form of string
+    static const char* status_cstr(const Status& status);
+};
+
+}    // namespace lib
+}    // namespace ara
+}    // namespace ucm
+}    // namespace vrte
+}    // namespace bosch
+
+/// @}
+
+#endif // UCM_AAP_PKGMANAGER_ARA_LIB_ARACONV_H_

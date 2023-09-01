@@ -1,0 +1,7 @@
+@STATEMACHINE | SM_STATEMACHINE_ID_DEFAULT | 0
+
+############################################################################################
+# Event composition
+############################################################################################
+@EVENT | SM_STARTUP_FINISHED | EV_VERSION | EV_SM | SM_STATEMACHINE_ID_DEFAULT | 0x000000001
+@EVENT | EV_SM_GET_INITIAL_MACHINESTATE_TRANSITION_RESULT | EV_VERSION | EV_SM | SM_STATEMACHINE_ID_DEFAULT | 0x000000002

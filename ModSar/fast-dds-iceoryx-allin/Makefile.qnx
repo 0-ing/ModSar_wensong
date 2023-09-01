@@ -1,0 +1,33 @@
+PWD := $(shell pwd)
+default:all
+
+$(warning "now path:   $(PWD)")
+
+boost_1550:
+	#cd $(PWD)/boost_1_55_0 && patch -p1 < ../boost-1_55-qnx700.patch
+	#cd $(PWD)/deps/boost_1_55_0 && ./bootstrap.sh
+	#-bash -c ' cd $(PWD)/deps/boost_1_55_0 && ./b2 --without-python install link=static toolset=qcc cxxflags="-Vgcc_ntox86_64" target-os=qnxnto --prefix=boost_qnx_install'
+
+vsomeip_qnx:
+	-cd $(PWD)/deps/vsomeip-qnx && mkdir -p build_qnx && cd build_qnx
+	cd $(PWD)/deps/vsomeip-qnx/build_qnx && cmake .. -DCMAKE_TOOLCHAIN_FILE=../qnx_7.0.0_linux_x86_64.cmake -DCMAKE_INSTALL_PREFIX=../../vsomeip3.3
+	cd $(PWD)/deps/vsomeip-qnx/build_qnx && make install
+
+prepared:
+	$(warning "work prepared")
+
+deps: prepared boost_1550 vsomeip_qnx
+	echo "ok"
+
+app:
+	$(warning 'make apps')
+	-cd $(PWD)/apps/vsomeip_example && mkdir -p build
+	cd $(PWD)/apps/vsomeip_example/build && cmake .. -DCMAKE_TOOLCHAIN_FILE=$(PWD)/deps/vsomeip-qnx/qnx_7.0.0_linux_x86_64.cmake && make
+
+all:deps app
+
+clean:
+	rm -rf $(PWD)/apps/vsomeip_example/build
+	rm -rf $(PWD)/deps/vsomeip-qnx/build_qnx
+	rm -rf cd $(PWD)/deps/boost_1_55_0/boost_qnx_install
+	rm -rf $(PWD)/deps/vsomeip3.3

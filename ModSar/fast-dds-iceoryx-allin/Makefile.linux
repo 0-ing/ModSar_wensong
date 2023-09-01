@@ -1,0 +1,55 @@
+PWD := $(shell pwd)
+default:all
+
+$(warning "now path:   $(PWD)")
+
+boost_1550:
+	#cd $(PWD)/boost_1_55_0 && patch -p1 < ../boost-1_55-qnx700.patch
+	#cd $(PWD)/deps/boost_1_55_0 && ./bootstrap.sh
+	#-bash -c ' cd $(PWD)/deps/boost_1_55_0 && ./b2 --without-python install link=static toolset=qcc cxxflags="-Vgcc_ntox86_64" target-os=qnxnto --prefix=boost_qnx_install'
+
+fast_dds_linux:
+	-sudo apt install libasio-dev libtinyxml2-dev
+	-cd $(PWD)/deps && git clone https://github.com/eProsima/Fast-DDS.git --recurse-submodules
+	-cd $(PWD)/deps/Fast-DDS && git clone https://github.com/eProsima/foonathan_memory_vendor.git
+	-cd $(PWD)/deps/Fast-DDS && git clone https://github.com/eProsima/Fast-CDR.git
+	-mkdir $(PWD)/deps/Fast-DDS/foonathan_memory_vendor/build
+	cd $(PWD)/deps/Fast-DDS/foonathan_memory_vendor/build && cmake .. -DCMAKE_INSTALL_PREFIX=$(PWD)/deps/Fast-DDS/install -DBUILD_SHARED_LIBS=ON
+	cd $(PWD)/deps/Fast-DDS/foonathan_memory_vendor/build && cmake --build . --target install
+	-mkdir  $(PWD)/deps/Fast-DDS/Fast-CDR/build
+	cd  $(PWD)/deps/Fast-DDS/Fast-CDR/build && cmake .. -DCMAKE_INSTALL_PREFIX=$(PWD)/deps/Fast-DDS/install
+	cd  $(PWD)/deps/Fast-DDS/Fast-CDR/build && cmake --build . --target install
+	-mkdir $(PWD)/deps/Fast-DDS/build
+	cd $(PWD)/deps/Fast-DDS/build && cmake ..  -DCMAKE_INSTALL_PREFIX=$(PWD)/deps/Fast-DDS/install
+	cd $(PWD)/deps/Fast-DDS/build && cmake --build . --target install
+iceorxy_linux:
+	cd $(PWD)/deps/iceoryx && cmake -Bbuild -Hiceoryx_meta -DCMAKE_INSTALL_PREFIX=$(PWD)/deps/iceoryx/install
+	cd $(PWD)/deps/iceoryx && cmake --build build --target install
+vsomeip_linux:
+	-cd $(PWD)/deps/vsomeip-qnx && mkdir -p build_linux && cd build_linux
+	cd $(PWD)/deps/vsomeip-qnx/build_linux && cmake .. -DCMAKE_INSTALL_PREFIX=../../vsomeip3.3.linux
+	cd $(PWD)/deps/vsomeip-qnx/build_linux && make install
+
+prepared:
+	$(warning "work prepared")
+
+deps: prepared boost_1550 vsomeip_linux fast_dds_linux iceorxy_linux
+	echo "ok"
+
+app:
+	$(warning 'make apps')
+	-cd $(PWD)/apps && mkdir -p build_linux
+	cd $(PWD)/apps/build_linux && cmake .. && make
+
+all:deps app
+
+clean:
+	rm -rf $(PWD)/apps/vsomeip_example/build_linux
+	rm -rf $(PWD)/deps/vsomeip-qnx/build_linux
+	rm -rf cd $(PWD)/deps/boost_1_55_0/boost_qnx_install
+	rm -rf $(PWD)/deps/vsomeip3.3
+	rm -rf $(PWD)/deps/Fast-DDS/foonathan_memory_vendor/build
+	rm -rf $(PWD)/deps/Fast-DDS/install
+	rm -rf $(PWD)/deps/Fast-DDS/Fast-CDR/build
+	rm -rf $(PWD)/deps/iceoryx/build
+	rm -rf $(PWD)/apps/build_linux

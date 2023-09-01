@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11  -rdynamic CMakeFiles/hello_world_service.dir/hello_world_service_main.cpp.o  -o hello_world_service   -L/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/apps/vsomeip_example/../../deps/vsomeip3.3.linux/lib  -Wl,-rpath,/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/apps/vsomeip_example/../../deps/vsomeip3.3.linux/lib -lvsomeip3 -lpthread 

@@ -1,0 +1,11 @@
+prefix=/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/deps/vsomeip3.3.linux
+exec_prefix=/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/deps/vsomeip3.3.linux
+libdir=/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/deps/vsomeip3.3.linux/lib
+includedir=/home/iwl1wx/bosch/ModSar/fast-dds-iceoryx-allin/deps/vsomeip3.3.linux/include
+
+Name: 
+Description: New SOME/IP stack, feature complete
+Version: 3.1.20
+Libs: -L${libdir} -lvsomeip3
+Cflags: -I${includedir}
+

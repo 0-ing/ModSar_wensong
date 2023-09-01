@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/iox-cpp-subscriber-untyped.dir/iox_subscriber_untyped.cpp.o  -o iox-cpp-subscriber-untyped  /usr/local/lib/libiceoryx_posh.a /usr/local/lib/libiceoryx_dust.a /usr/local/lib/libiceoryx_hoofs.a /usr/local/lib/libiceoryx_platform.a -lpthread -lacl -latomic -lpthread -lrt 

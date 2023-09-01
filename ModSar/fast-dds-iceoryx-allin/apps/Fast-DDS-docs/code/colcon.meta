@@ -1,0 +1,13 @@
+{
+    "names":
+    {
+        "fastrtps" :
+        {
+            "cmake-args": [
+                "-DEPROSIMA_BUILD=OFF",
+                "-DSECURITY=ON",
+            ]
+        }
+    }
+}
+

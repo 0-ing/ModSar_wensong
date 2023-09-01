@@ -241,13 +241,13 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
-build/*
-buildCentral/output/*
-external/**/build
+# build/*
+# buildCentral/output/*
+# external/**/build
 
-external/fastdds
-external/iceoryx
-external/vsomeip
+# external/fastdds
+# external/iceoryx
+# external/vsomeip
 fast-dds-iceoryx-allin/
 
 external/install/lib/libvsomeip3.so.3.3.8
